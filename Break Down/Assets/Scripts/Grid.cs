@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Grid : MonoBehaviour {
-	
+   
 	public GameObject sprite;
 	float cellSize = 10f;
 	
@@ -20,16 +20,16 @@ public class Grid : MonoBehaviour {
 				GameObject spriteGrid = (GameObject)Instantiate(sprite);
 				spriteGrid.transform.position = new Vector3(spriteGrid.transform.position.x + xPos, spriteGrid.transform.position.y + yPos, spriteGrid.transform.position.z);
 				spriteGrid.transform.name = "Square" + string.Format ("{0:D2}", x) + " " + string.Format ("{0:D2}", y);
-				grid[x,y] = spriteGrid;
+                grid[x,y] = spriteGrid;
 				//Debug.Log (xPos + "xPos" + yPos + "yPos");
-				
+
 				yPos += cellSize;
 				
 			}
 			xPos += cellSize;
 			
 		}
-		
+
 	}
 	
 	void Update () 
