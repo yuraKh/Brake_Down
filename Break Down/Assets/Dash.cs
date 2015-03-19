@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class GridControl : MonoBehaviour {
@@ -6,16 +6,62 @@ public class GridControl : MonoBehaviour {
 	public Color[] colorArr = new Color[5];
 	
 	void OnMouseDown (){
-
-		string s = gameObject.name;
-		int x = int.Parse(s.Substring(6,2));
-		int y = int.Parse(s.Substring(9,2));
-        Color work;
 		
-		Debug.Log("x = " + x +  "; y = " + y + "\n" +
-		          "(x+1) = " + (x + 1) + "; (y+1) = " + (y+1) +
-		          "|| (x-1) = " + (x - 1) + "; (y-1) = " + (y-1));
-        for (int i = x-1; i < x+2; i++) 
+		string s = gameObject.name;
+		int x = int.Parse (s.Substring (6, 2));
+		int y = int.Parse (s.Substring (9, 2));
+		Color work;
+		
+		Debug.Log ("x = " + x + "; y = " + y + "\n" +
+		           "(x+1) = " + (x + 1) + "; (y+1) = " + (y + 1) +
+		           "|| (x-1) = " + (x - 1) + "; (y-1) = " + (y - 1));
+		//int i = x;
+		int j = y;
+		int mj = y;
+		while (Grid.grid[x,y].GetComponent<SpriteRenderer> ().color == Grid.grid[x,j+1].GetComponent<SpriteRenderer> ().color) {
+			
+			Grid.grid [x, j + 1].GetComponent<SpriteRenderer> ().color = new Color (0f, 0f, 0f, 0.255f);
+			for (int z = x; z < x+1; z++) {
+				
+				for (int b = y; b < 19; b++) {
+					
+					if ((z >= 0 && z < 10) && (b >= 0 && b < 20)) {
+						
+						work = Grid.grid [z, b].GetComponent<SpriteRenderer> ().color; //Grid.grid[x,y+1];
+						Grid.grid [z, b].GetComponent<SpriteRenderer> ().color = Grid.grid [z, b + 1].GetComponent<SpriteRenderer> ().color;
+						Grid.grid [z, b + 1].GetComponent<SpriteRenderer> ().color = work;
+					}
+				}
+			}
+			j++;
+			
+		} 
+		
+		while (Grid.grid[x,y].GetComponent<SpriteRenderer> ().color == Grid.grid[x,mj -1].GetComponent<SpriteRenderer> ().color) {
+			
+			Grid.grid [x, mj - 1].GetComponent<SpriteRenderer> ().color = new Color (0f, 0f, 0f, 0.255f);
+			
+			for (int u = x; u < x+1; u++) {
+				
+				for (int k = y; k < 19; k++) {
+					
+					if ((u >= 0 && u < 10) && (k >= 0 && k < 20)) {
+						
+						work = Grid.grid [u, k].GetComponent<SpriteRenderer> ().color; //Grid.grid[x,y+1];
+						Grid.grid [u, k].GetComponent<SpriteRenderer> ().color = Grid.grid [u, k - 1].GetComponent<SpriteRenderer> ().color;
+						Grid.grid [u, k - 1].GetComponent<SpriteRenderer> ().color = work;
+					}
+				}
+			}
+			mj--;
+			
+		}
+		Grid.grid [x, y].GetComponent<SpriteRenderer> ().color = new Color (0f, 0f, 0f, 0.255f);
+		
+		
+		
+		
+		/*for (int i = x-1; i < x+2; i++) 
         {
             for (int j = y-1; j < y+2; j++) 
             {
@@ -43,10 +89,10 @@ public class GridControl : MonoBehaviour {
                     }
                 }
             }
-        }
-            
-
-       /* Grid.grid[x,y].GetComponent<SpriteRenderer> ().color = new Color (0f, 0f, 0f, 0.255f);
+        }*/
+		
+		
+		/* Grid.grid[x,y].GetComponent<SpriteRenderer> ().color = new Color (0f, 0f, 0f, 0.255f);
         if (Grid.grid[x,y].GetComponent<SpriteRenderer> ().color == new Color (0f, 0f, 0f, 0.255f))
         {
             for(int i = x; i < x+1; i++)
@@ -61,8 +107,10 @@ public class GridControl : MonoBehaviour {
                     }
                 }
             }
-        }*/
+        }
+		
 	}
+	
 	
 	// Use this for initialization
 	void Start () {
@@ -75,4 +123,4 @@ public class GridControl : MonoBehaviour {
 	void Update () {
 		
 	}
-}
+}*/
